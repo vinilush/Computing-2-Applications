@@ -1,0 +1,7 @@
+{
+    "jslint.version": "es6",
+    "jslint.options": {
+        "browser": true,
+        "devel": true
+    }
+}
