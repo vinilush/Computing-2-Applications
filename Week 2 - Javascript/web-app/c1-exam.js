@@ -14,7 +14,7 @@ const Exam = Object.create(null);
 //    for example:
 //      an input list of [1,2,3,4,5,6,7,8]
 //      returns [1,4,7]
-<<<<<<< HEAD
+
 Exam.every_third = function (listinput) {
     /*takes input list, returns a list with the starting item and every third item*/
 
