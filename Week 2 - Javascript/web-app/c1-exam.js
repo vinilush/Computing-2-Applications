@@ -35,12 +35,12 @@ Exam.every_third = function (listinput) {
         }
     }
     return newlist; //returns the new list
-=======
+/*
 Exam.every_third = function (array) {
     return array.filter((ignore, k) => k % 3 === 0);
->>>>>>> 814349cec40de960a465ac8f7d2f86a34b5cb1d1
-};
 
+};
+*/
 
 // Strings
 
