@@ -24,6 +24,19 @@
             "preferences": {
               "security.fileuri.strict_origin_policy": false
             }
-          }
+        },
+
+        {
+            "name": "presentation debug",
+            "type": "firefox",
+            "request": "launch",
+            "reAttach": true,
+            "reloadOnAttach": true,
+            "url": "http://localhost:8080/index.html",
+            "webRoot": "${workspaceFolder}/web-app/static/presentation",
+            "preferences": {
+              "security.fileuri.strict_origin_policy": false
+            }
+        }
     ]
 }
