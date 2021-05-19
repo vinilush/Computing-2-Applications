@@ -38,9 +38,9 @@ Exam.every_third = function (listinput) {
 /*
 Exam.every_third = function (array) {
     return array.filter((ignore, k) => k % 3 === 0);
-
-};
 */
+};
+
 
 // Strings
 
@@ -64,17 +64,19 @@ Exam.merge_sentences = function (s1,s2) {
     if (s1_words.length !== s2_words.length) {
         throw "ValueError";
     }
-
     //creates counter and new string
     let i=0;
     let s3 = "";
     //iterates through both sentences
-    for (;i < s1_words.length + 1; i++){
-        s3 = s3.concat(s1_words[i], " ", s2_words[i], " "); //THIS IS THE ISSUE MAYBE?
-    }
+    for (;i < s1_words.length; i++){
+        s3 = s3 + s1_words[i] + " " + s2_words[i] + " "; //THIS IS THE ISSUE MAYBE?
+    };
     //remove the last space
     s3 = s3.trim();
     return s3 ;
+
+    //SOLUTION USING MAP, ABIT CONFUSING??
+    // return s1_words.flatMap((v, k) => [v, s2_words[k]]).join(" ");
 };
 
 // Write a function that returns the number of lowercase letters in
@@ -86,7 +88,7 @@ Exam.lowercase_count = function (input_string) {
     /*takes string and returns number of lowercase letters */
 
     //output counter that is returned
-    let counter = 0;
+    let lower_count = 0;
 
     //iterates through each character in string
     let i = 0;
@@ -94,10 +96,14 @@ Exam.lowercase_count = function (input_string) {
         //checks if the character is lowercase
         if (input_string[i] === input_string[i].toLowerCase()){
             //if lowercase, then increments the counter
-            counter += 1;
+            lower_count = lower_count + 1;
         }
     }
-    return counter;
+    return lower_count;
+
+    //other solution
+    //const letters = input_string.split("");
+    //return letters.filter((l) => l !== l.toUpperCase()).length;
 };
 
 
@@ -108,30 +114,36 @@ Exam.lowercase_count = function (input_string) {
 Exam.longest_key = function (input_object) {
     /*returns longest key in object where keys are strings*/
 
-    //defines counter variable that stores length of longest key
-    let counter = 0;
-
-    let objectkeys = input_object.keys()
+    let object_keys = Object.keys(input_object);
     let longest_key = "";
 
     //iterates through keys
-    for (let key_input in input_object) {
-        //checks if key is longer than counter
-        if (key_input.length > counter){
-            let counter = key_input.length;
-            let longest_key = key_input;
+    for (let i=0; i<object_keys.length; i++){
+        //checks if key is longer than the longest key recorded
+        if (object_keys[i].length > longest_key.length){
+            longest_key = object_keys[i];
         }
     }
     return longest_key;
+
+    // return Object.keys(input_object).reduce((a, x) => (
+    //     a.length >= x.length
+    //     ? a // accumulator which becomes the longest key - if true
+    //     : x // currentvalue which is changed to the next value - if false
+    // ));
 };
 
 // Write a function that returns the largest value that is an even value in the
 // input dictionary whose values are all whole numbers.
 Exam.value_greatest_even = function (input_object) {
 
+    //makes array of even numbers
+    let evens = Object.values(input_object).filter( (k) => k % 2 === 0);
 
+    //finds largest even values
+    let max_even = Math.max(...evens);
 
-    return;
+    return max_even;
 };
 
 
@@ -145,6 +157,7 @@ Exam.value_greatest_even = function (input_object) {
 Exam.greeting = function (username, location="London") {
     let sentence = "Hello, " + username + ", how is " + location + "?";
     return sentence;
+    //return `Hello, ${name}, how is ${location}?`;
 };
 
 
@@ -162,6 +175,7 @@ Exam.floor_line = function (x, scalar=1, offset=0) {
         return calc;
     }
     return 0;
+    //return Math.max(0, scalar * x + offset);
 };
 
 export default Object.freeze(Exam);
